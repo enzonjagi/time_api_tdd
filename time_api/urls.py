@@ -20,13 +20,7 @@ from django.http import HttpResponse, JsonResponse
 from django.utils import timezone
 from datetime import datetime
 from . import settings
-
-def time_api(request):
-    """Written for the sake of passing tests"""
-
-    return JsonResponse({
-        'current_time': datetime.now().strftime(settings.DATETIME_FORMAT)
-    })
+from times.views import time_api
 
 urlpatterns = [
     path('admin/', admin.site.urls),

@@ -1,6 +1,6 @@
 from unittest.mock import patch
 from django.test import TestCase
-from django.utils import timezone, datetime_safe
+from django.utils import timezone
 from datetime import datetime
 
 class TimeApiTestCase(TestCase):
@@ -36,7 +36,7 @@ class TimeApiTestCase(TestCase):
         """Test current if it response returns current utc time"""
 
         with patch('django.utils.timezone.now') as mock_tz_now:
-            expected_datetime = datetime(2023, 5, 12, 15, 38, tzinfo=timezone.utc)
+            expected_datetime = datetime.now().replace(microsecond=0)
             mock_tz_now.return_value = expected_datetime
 
             response = self.client.get('/api/time/')

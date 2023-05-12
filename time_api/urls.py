@@ -18,12 +18,13 @@ from django.contrib import admin
 from django.urls import path
 from django.http import HttpResponse, JsonResponse
 from django.utils import timezone
+from datetime import datetime
 
 def time_api(request):
     """Written for the sake of passing tests"""
 
     return JsonResponse({
-        'current_time': timezone.now().strftime('%Y-%m-%dT%H:%M:%SZ')
+        'current_time': datetime.now().strftime('%Y-%m-%dT%H:%M:%SZ')
     })
 
 urlpatterns = [
